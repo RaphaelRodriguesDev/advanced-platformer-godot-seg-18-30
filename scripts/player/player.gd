@@ -3,6 +3,8 @@ class_name Player
 
 onready var player_sprite: Sprite = get_node("Texture")
 
+# Testando Git
+
 var velocity: Vector2 
 
 var jump_count: int = 0
