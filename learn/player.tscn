@@ -1,0 +1,55 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://learn/script/player.gd" type="Script" id=1]
+[ext_resource path="res://learn/script/if_else.gd" type="Script" id=2]
+[ext_resource path="res://learn/script/return.gd" type="Script" id=3]
+[ext_resource path="res://learn/script/match.gd" type="Script" id=4]
+[ext_resource path="res://learn/script/for.gd" type="Script" id=5]
+[ext_resource path="res://learn/script/listas.gd" type="Script" id=6]
+[ext_resource path="res://learn/script/while.gd" type="Script" id=7]
+[ext_resource path="res://learn/script/export.gd" type="Script" id=8]
+[ext_resource path="res://learn/script/onready.gd" type="Script" id=9]
+[ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://learn/script/dicionario.gd" type="Script" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31, 30.5 )
+
+[node name="variaveis_ready_proccess" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="if_else" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="return" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="match" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="for" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="listas" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="while" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="export" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="onready" type="KinematicBody2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="onready"]
+texture = ExtResource( 10 )
+
+[node name="collision" type="CollisionShape2D" parent="onready"]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 1 )
+
+[node name="dicionario" type="Node2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="Node2D" type="Area2D" parent="."]
