@@ -3,8 +3,6 @@ class_name PlayerTexture
 
 var suffix: String = "_right"
 var normal_attack: bool = false
-var shield_off: bool = false
-var crouching_off: bool = false
 
 export(NodePath) var animation_path
 export(NodePath) var player_path
@@ -39,10 +37,16 @@ func verify_position(direction: Vector2) -> void:
 func action_behavior() -> void:
 	if player.attacking and normal_attack:
 		animation.play("attack" + suffix)
-	elif player.defending and shield_off:
-		animation.play("shield")
-	elif player.crouching and crouching_off:
-		animation.play("crouch")
+	elif player.defending:
+		if animation.current_animation != "shield":
+			animation.play("shield")
+		elif not animation.is_playing():
+			animation.seek(animation.current_animation_length, true)
+	elif player.crouching:
+		if animation.current_animation != "crouch":
+			animation.play("crouch")
+		elif not animation.is_playing():
+			animation.seek(animation.current_animation_length, true)
 
 func vertical_behavior(direction: Vector2) -> void:
 	if direction.y > 0:
@@ -66,13 +70,3 @@ func on_animation_finished(anim_name):
 		"attack_left", "attack_right":
 			normal_attack = false
 			player.attacking = false
-
-		"shield":
-			shield_off = false
-			player.defending = false
-			player.can_track_input = true
-
-		"crouch":
-			crouching_off = false
-			player.crouching = false
-			player.can_track_input = true

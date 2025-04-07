@@ -54,16 +54,22 @@ func attack() -> void:
 		player_sprite.normal_attack = true
 
 func crouch() -> void:
-	if Input.is_action_just_pressed("crouch") and is_on_floor() and not defending:
+	if Input.is_action_pressed("crouch") and is_on_floor() and not defending:
 		crouching = true
 		can_track_input = false
-		player_sprite.crouching_off = true
+	else:
+		if not defending:
+			crouching = false
+			can_track_input = true
 
 func defense() -> void:
-	if Input.is_action_just_pressed("defense") and is_on_floor() and not crouching:
+	if Input.is_action_pressed("defense") and is_on_floor() and not crouching:
 		defending = true
 		can_track_input = false
-		player_sprite.shield_off = true
+	else:
+		if not crouching:
+			defending = false
+			can_track_input = true
 
 func gravity(delta: float) -> void:
 	velocity.y += delta * player_gravity
