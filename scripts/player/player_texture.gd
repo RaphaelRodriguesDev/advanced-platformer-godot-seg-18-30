@@ -11,7 +11,7 @@ onready var animation = get_node(animation_path) if animation_path != null else 
 onready var player = get_node(player_path) if player_path != null else null
 
 func _ready():
-	if animation:
+	if animation and not animation.is_connected("animation_finished", self, "on_animation_finished"):
 		animation.connect("animation_finished", self, "on_animation_finished")
 
 func animate(direction: Vector2) -> void:
@@ -39,15 +39,16 @@ func action_behavior() -> void:
 		animation.play("attack" + suffix)
 	elif player.defending:
 		if animation.current_animation != "shield":
-			animation.play("shield")
-		elif not animation.is_playing():
-			animation.seek(animation.current_animation_length, true)
+			if animation.has_animation("shield"):
+				animation.play("shield")
+				animation.stop()
+				animation.seek(animation.get_animation("shield").length, true)
 	elif player.crouching:
 		if animation.current_animation != "crouch":
-			animation.play("crouch")
-		elif not animation.is_playing():
-			animation.seek(animation.current_animation_length, true)
-
+			if animation.has_animation("crouch"):
+				animation.play("crouch")
+				animation.stop()
+				animation.seek(animation.get_animation("crouch").length, true)
 func vertical_behavior(direction: Vector2) -> void:
 	if direction.y > 0:
 		player.landing = true
