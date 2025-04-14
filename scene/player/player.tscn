@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/player/char_purple.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=2]
@@ -8,21 +8,22 @@
 extents = Vector2( 6, 15.5 )
 
 [sub_resource type="Animation" id=1]
-length = 0.001
+length = 0.2
+loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Texture:texture")
+tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 1 ) ]
+"values": [ 85, 86 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Texture:frame")
+tracks/1/path = NodePath("Texture:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -31,7 +32,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ ExtResource( 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Texture:hframes")
@@ -674,6 +675,59 @@ tracks/3/keys = {
 "values": [ 11 ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "wall_slide"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 85, 86 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Texture:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Texture:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 speed = 75
@@ -684,6 +738,7 @@ player_gravity = 350
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 11
+frame = 86
 script = ExtResource( 3 )
 animation_path = NodePath("../Animation")
 player_path = NodePath("..")
@@ -704,6 +759,7 @@ anims/jump = SubResource( 5 )
 anims/landing = SubResource( 7 )
 anims/run = SubResource( 3 )
 anims/shield = SubResource( 12 )
+anims/wall_slide = SubResource( 13 )
 
 [node name="LevelCamera" type="Camera2D" parent="."]
 current = true
@@ -715,5 +771,9 @@ drag_margin_v_enabled = true
 
 [node name="Collision" type="CollisionShape2D" parent="AttackArea"]
 disabled = true
+
+[node name="WallRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 11, 0 )
 
 [connection signal="animation_finished" from="Animation" to="Texture" method="on_animation_finished"]
