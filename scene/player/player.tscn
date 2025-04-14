@@ -686,7 +686,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 85, 86 ]
@@ -738,7 +738,7 @@ player_gravity = 350
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 11
-frame = 86
+frame = 85
 script = ExtResource( 3 )
 animation_path = NodePath("../Animation")
 player_path = NodePath("..")
