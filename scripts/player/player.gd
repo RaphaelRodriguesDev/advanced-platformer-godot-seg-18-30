@@ -1,7 +1,6 @@
 extends KinematicBody2D
 class_name Player
-
-#Onready player_sprite       
+  
 onready var player_sprite: Sprite = get_node("Texture")
 
 var velocity: Vector2 
