@@ -16,7 +16,7 @@ func _ready():
 
 func animate(direction: Vector2) -> void:
 	verify_position(direction)
-	if player.attacking or player.defending or player.crouching:
+	if player.attacking or player.defending or player.crouching or player.next_to_wall():
 		action_behavior()
 	elif direction.y != 0:
 		vertical_behavior(direction)
