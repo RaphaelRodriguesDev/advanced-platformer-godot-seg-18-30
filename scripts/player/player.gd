@@ -89,7 +89,7 @@ func gravity(delta: float) -> void:
 	if next_to_wall():
 		velocity.y += wall_gravity * delta
 		if velocity.y >= wall_gravity:
-			velocity = wall_gravity
+			velocity.y = wall_gravity
 	else:
 		velocity.y += delta * player_gravity
 		if velocity.y >= player_gravity:
