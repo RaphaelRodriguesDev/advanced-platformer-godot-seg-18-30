@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scene/env/mask.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/env/background.tscn" type="PackedScene" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://resources/small_decoration_tile.tres" type="TileSet" id=4]
 [ext_resource path="res://resources/floor.tres" type="TileSet" id=5]
 [ext_resource path="res://scene/player/player.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_hdr_threshold = 1.5
 
 [node name="Level" type="Node2D"]
 
@@ -38,3 +43,6 @@ position = Vector2( 24, 20 )
 wall_jump_speed = -150
 wall_gravity = 20
 wall_impulse_speed = 500
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
