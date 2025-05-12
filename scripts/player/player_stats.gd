@@ -58,7 +58,13 @@ func update_exp(value: int) -> void:
 func on_level_up() -> void:
 	current_mana = base_mana + bonus_mana
 	current_health = base_health + bonus_health
-	pass
+
+func update_health(type: String, value: int) -> void:
+	match type:
+		"Increase":
+			current_health += value
+			if current_health >= max_health:
+				current_health == max_health
 		
 
 
