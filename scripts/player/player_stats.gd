@@ -46,8 +46,8 @@ func _ready() -> void:
 func update_exp(value: int) -> void:
 	current_exp += value
 	
-	if current_exp>= level_dict
-
+	if current_exp >= level_dict[str(level)] and level < 9:
+		pass
 
 
 
