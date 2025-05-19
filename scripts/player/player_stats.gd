@@ -65,10 +65,24 @@ func update_health(type: String, value: int) -> void:
 			current_health += value
 			if current_health >= max_health:
 				current_health == max_health
+		"Decrease":
+			verify_shield(value)
+			if current_health <= 0:
+				pass # Chamar a  animação de morte
+			else:
+				pass # Chamar a animação de tomar dano
 		
-
-
-
+		
+func verify_shield(value: int) -> void:
+	if shielding:
+		if (base_defense + bonus_defense) >= value:
+			return
+			
+		var damage = abs((base_defense + bonus_defense) - value)
+		current_health -= damage
+		
+	else:
+		current_health -= value
 
 
 
