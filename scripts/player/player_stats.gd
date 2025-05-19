@@ -36,6 +36,8 @@ var level_dict: Dictionary = {
 	"9": 356
 }
 
+export(NodePath) onready var player = get_node(player) as KinematicBody2D
+
 func _ready() -> void: 
 	current_mana = base_mana + bonus_mana
 	max_mana = current_mana
@@ -68,9 +70,10 @@ func update_health(type: String, value: int) -> void:
 		"Decrease":
 			verify_shield(value)
 			if current_health <= 0:
-				pass # Chamar a  animação de morte
+				player.dead = true
 			else:
-				pass # Chamar a animação de tomar dano
+				player.on_hit = true
+				player.attacking = false
 		
 		
 func verify_shield(value: int) -> void:
@@ -91,7 +94,7 @@ func update_mana(type: String, value: int) -> void:
 			if current_mana >= max_mana:
 				current_mana = max_mana
 		"Decrease":
-			pass
+			current_mana -= value
 
 
 
