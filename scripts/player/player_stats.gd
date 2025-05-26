@@ -96,7 +96,9 @@ func update_mana(type: String, value: int) -> void:
 		"Decrease":
 			current_mana -= value
 
-
+func _process(delta) -> void:
+	if Input.is_action_just_pressed("ui_select"):
+		update_health("Decrease", 5)
 
 
 
