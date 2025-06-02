@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/enemy/detection_area.gd" type="Script" id=1]
+[ext_resource path="res://scripts/enemy/enemy_template.gd" type="Script" id=2]
 
 [node name="EnemyTemplate" type="KinematicBody2D"]
+script = ExtResource( 2 )
 
 [node name="Texture" type="Sprite" parent="."]
 

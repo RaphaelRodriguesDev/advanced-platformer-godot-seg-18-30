@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/enemy/detection_area.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "EnemyTemplate",
+"language": "GDScript",
+"path": "res://scripts/enemy/enemy_template.gd"
+}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
@@ -47,6 +52,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Background": "",
 "DetectionArea": "",
+"EnemyTemplate": "",
 "Level": "",
 "Player": "",
 "PlayerStats": "",
