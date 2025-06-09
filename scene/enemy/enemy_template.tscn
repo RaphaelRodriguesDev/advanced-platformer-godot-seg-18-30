@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/enemy/detection_area.gd" type="Script" id=1]
 [ext_resource path="res://scripts/enemy/enemy_template.gd" type="Script" id=2]
+[ext_resource path="res://scripts/enemy/enemy_texture.gd" type="Script" id=3]
 
 [node name="EnemyTemplate" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Texture" type="Sprite" parent="."]
+script = ExtResource( 3 )
+attack_area_collision = NodePath("../AttackArea/Collision")
+animation = NodePath("../Animation")
+enemy = NodePath("..")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 
@@ -29,3 +34,4 @@ script = ExtResource( 1 )
 
 [connection signal="body_entered" from="DetectionArea" to="DetectionArea" method="on_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="DetectionArea" method="on_body_exited"]
+[connection signal="animation_finished" from="Animation" to="Texture" method="on_animation_finished"]

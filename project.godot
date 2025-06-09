@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/enemy/enemy_template.gd"
 }, {
+"base": "Sprite",
+"class": "EnemyTexture",
+"language": "GDScript",
+"path": "res://scripts/enemy/enemy_texture.gd"
+}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "Background": "",
 "DetectionArea": "",
 "EnemyTemplate": "",
+"EnemyTexture": "",
 "Level": "",
 "Player": "",
 "PlayerStats": "",
